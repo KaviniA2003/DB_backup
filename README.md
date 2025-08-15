@@ -43,5 +43,6 @@ On first run, a browser window will open for Google authentication.
 
 - Backups are stored in the `backups/mysql` directory.
 - Only `.sql.gz` files are uploaded to Google Drive.
-- Old backups (older than 7 days) are deleted automatically.
+- Old backups (older than 7 days) are deleted automatically. (Locally)
+- Old backups (older than 30 days) are deleted from the google drive automatically.
 
