@@ -136,7 +136,7 @@ def backup_database():
     except subprocess.CalledProcessError as e:
         print(f"Error during backup: {e.stderr.decode()}")
     except Exception as ex:
-        print(f"⚠️ Unexpected error: {ex}")
+        print(f"Unexpected error: {ex}")
 
 
 if __name__ == "__main__":
