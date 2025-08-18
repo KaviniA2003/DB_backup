@@ -1,34 +1,33 @@
-# DB_backup
 # MySQL Backup & Google Drive Uploader
 
-This project automates MySQL database backups and uploads them to a specified Google Drive folder.
-## https://script.google.com/macros/s/AKfycbyauF4_0gBs8oEWfCIXdIea9HAvdpaPzkSTFWwbomn-9xlrxRvuOdzfI3oyJ-rymrTPSQ/exec
+This tool automates MySQL database backups and uploads them to Google Drive using a Google Apps Script WebApp.
+
 ## Features
 
 - Dumps a MySQL database to a `.sql` file
 - Compresses the backup to `.sql.gz`
 - Cleans up old backups (older than 7 days)
-- Uploads the compressed backup to Google Drive
+- Uploads the compressed backup to Google Drive via a WebApp
 
 ## Requirements
 
 - Python 3.7+
 - MySQL server and `mysqldump` utility
-- Google Cloud project with Drive API enabled
-- `credentials.json` file from Google Cloud Console
+- Google Apps Script WebApp for Drive upload
+- `requests` Python package
 
 ## Setup
 
 1. **Install dependencies:**
    ```
-   pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
+   pip install requests
    ```
 
-2. **Place your `credentials.json`** in the project folder.
+2. **Configure your database and WebApp:**
+   - Edit `main.py` and set your database credentials (`DB_NAME`, `DB_USER`, etc.)
+   - Set your Google Apps Script WebApp URL (`WEBAPP_URL`)
 
-3. **Edit `main.py`:**
-   - Set your database credentials (`DB_NAME`, `DB_USER`, etc.)
-   - Set your Google Drive folder ID (`DRIVE_FOLDER_ID`)
+3. **Ensure `mysqldump` is available** in your system PATH.
 
 ## Usage
 
@@ -37,11 +36,8 @@ Run the backup script:
 python main.py
 ```
 
-On first run, a browser window will open for Google authentication.
-
 ## Notes
 
 - Backups are stored in the `backups/mysql` directory.
 - Only `.sql.gz` files are uploaded to Google Drive.
-- Old backups (older than 7 days) are deleted automatically. (Locally)
-- Old backups (older than 30 days) are deleted from the google drive automatically.
+- Old backups (older than 7 days) are deleted
